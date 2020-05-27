@@ -36,7 +36,9 @@ To build the project use script named run. Several options are allowed:
     ./run clean - for cleaning the build directory.
 
     ./run help  - for listing possible options.
-In case permission was denied change the access permission by command:
+    
+In case the execute permission was denied change the access permission by command:
+   
     chmod +x run
 
  # Run Unit Tesing
