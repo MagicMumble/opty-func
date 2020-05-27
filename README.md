@@ -3,7 +3,7 @@ Library for optimization methods testing
 
 
 # Building and running the project
-Install library to your ~/.local/share directory using git:
+Install library to your `~/.local/share` directory using git:
             
     git clone https://github.com/MagicMumble/opty-func ~/.local/share/opty-func
  
