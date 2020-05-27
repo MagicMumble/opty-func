@@ -53,7 +53,41 @@ At the end of output - the amount of conducted tests and failures.
 
  ## Using .so library in remote .c file
  
+ Example of c code invoking some functions from .so library. Don't forget to include header file!
+ 
+           #include <stdio.h>
+            #include "test_funcs_optimize.h"
+
+            int main() {
+             int n2 = 2;
+             double x_start2[] = {3.0, 4.0};
+             double mas_res[n2];
+             hooke_jeeves_method(x_start2, n2, "Matias_func", mas_res, 0.001);
+             double calculated_glob_min = sphere_function(mas_res, n2);
+             get_min_x_sphere_function(mas_res, n2);
+             double real_glob_min = sphere_function(mas_res, n2);
+             double time = get_execution_time();
+             printf("calc_min = %lf, real_min %lf, exec_time = %lf seconds\n", calculated_glob_min, real_glob_min, time);
+             return 0;
+            }
+            
+Let's say your file is named main.c. You can compile it with the command
+
+            gcc -L ~/.local/share/opty-func/build/src/test_funcs_lib -I ~/.local/share/opty-func/src/test_funcs_lib/ -o main main.c -ltest_funcs_optimize
+            
+The option -L tells the compiler where to look for the .so library. The option -I causes given directory to be searched after the current directory and ahead of the standard system directories. The `-ltest_funcs_optimize` option links the program with the library `libtest_funcs_optimize.so` (the .so object name always starts with the prefix `lib` so compiler knows exactly that it's looking for a .so library).
+
+           export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
+           
+The environment variable `LD_LIBRARY_PATH` tells the compiler where to load the .so library from for first time before the standard set of directories. Now run the object file `main.o`:
+             
+            ./main
+            
+You can find this example in the directory `src/example_c`. To simplify running .c file use attached script file. 
+
  ## Using .so library in remote .py file
+ 
+ 
  
  # Using .so library in remote .java file
  
