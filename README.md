@@ -55,7 +55,7 @@ At the end of output - the amount of conducted tests and failures.
  
  Example of c code invoking some functions from .so library. Don't forget to include header file!
  
-           #include <stdio.h>
+            #include <stdio.h>
             #include "test_funcs_optimize.h"
 
             int main() {
