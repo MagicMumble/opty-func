@@ -2,7 +2,7 @@
 Library for optimization methods testing
 
 
-#Building and running the project
+# Building and running the project
 Install library to your ~/.local/share directory using git:
             
     git clone https://github.com/MagicMumble/opty-func ~/.local/share/opty-func
@@ -38,6 +38,8 @@ To build the project use script named run. Several options are allowed:
 
     ./run help  - for listing possible options.
 
+ # Run Unit Tesing
+ 
  
 
                     Представленные методы:
