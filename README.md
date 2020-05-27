@@ -41,7 +41,20 @@ In case the execute permission was denied change the access permission by comman
    
     chmod +x run
 
- # Run Unit Tesing
+After running the project as a result in your terminal you have information about testing every function and 
+method from the compiled library (PASS/FAIL, calculated global minimum of current function with current method,
+real global minimum, calculation error, execution time). At the end of output - the amount of conducted tests and 
+failures.
+
+ # Using .so library in remote .c file
+ 
+ # Using .so library in remote .py file
+ 
+ # Using .so library in remote .java file
+ 
+ # Using .so library in remote .go file
+ 
+ # Using .so library in remote .js file
  
  
 
