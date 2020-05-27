@@ -2,7 +2,7 @@
 Library for optimization methods testing
 
 
-# Building and running the project
+## Building and running the project
 Install library to your `~/.local/share` directory using git:
             
     git clone https://github.com/MagicMumble/opty-func ~/.local/share/opty-func
@@ -46,9 +46,9 @@ method from the compiled library (PASS/FAIL, calculated global minimum of curren
 real global minimum, calculation error, execution time). At the end of output - the amount of conducted tests and 
 failures.
 
- # Using .so library in remote .c file
+ ## Using .so library in remote .c file
  
- # Using .so library in remote .py file
+ ## Using .so library in remote .py file
  
  # Using .so library in remote .java file
  
