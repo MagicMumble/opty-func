@@ -104,7 +104,7 @@ Now set the environment variable `PYTHONPATH`.
  
      export PYTHONPATH=~/.local/share/opty-func/binding_py/:$PYTHONPATH
 
-This command let the interpreter know where it can find the file `binding.py` which provides access to .so library functions using ctypes. Assuming you're in the same directory where resides your file you can run it with the simply command
+This command let the interpreter know where it can find the file `binding.py` which provides access to .so library functions using ctypes. Assuming you're in the same directory where resides your file you can run it with the simple command
 
      python3 main.py
      
