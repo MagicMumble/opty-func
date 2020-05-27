@@ -89,13 +89,32 @@ You can find this example in the directory `src/example_c`. To simplify running 
 
  ## Using .so library in remote .py file
  
+ Example of python code invoking some functions from .so library:
+      
+      import binding
+      
+      my_list = [9, 2, 3]
+      print("Hooke_Jeeves_method for sphere func: ", binding.hooke_jeeves_method(my_list, "Sphere_func", 0.001))
+      
+      x = [3, 4]
+      print("Boot: ", binding.boot_function(x))
+      print("Bookin: ", binding.bookin_function(x))
  
+Now set the environment variable `PYTHONPATH`.
  
- # Using .so library in remote .java file
+     export PYTHONPATH=~/.local/share/opty-func/binding_py/:$PYTHONPATH
+
+This command let the interpreter know where it can find the file `binding.py` which provides access to .so library functions using ctypes. Assuming you're in the same directory where resides your file you can run it with the simply command
+
+     python3 main.py
+     
+To find more complex example go the directory `src/example_py`. Use attached script file. 
  
- # Using .so library in remote .go file
+ ## Using .so library in remote .java file
  
- # Using .so library in remote .js file
+ ## Using .so library in remote .go file
+ 
+ ## Using .so library in remote .js file
  
  
 
