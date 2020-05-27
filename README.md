@@ -13,7 +13,7 @@ Come to newly created directory:
  
 To build the project you'll need to install Unity - static library with different 
 interfaces for running test and reporting results using assertions. It's linked 
-with the testing code (src/test/test.c). 
+with the testing code (`src/test/test.c`). 
 
     git clone https://github.com/ThrowTheSwitch/Unity.git
 
