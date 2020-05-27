@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#gcc -L/home/anna/CLionProjects/diplom1/build/src/test_funcs_lib -o main main.c -ltest_funcs_optimize     #-L указывает путь к .so
+
+gcc -L ~/.local/share/opty-func/build/src/test_funcs_lib -I ~/.local/share/opty-func/src/test_funcs_lib/ -o main main.c -ltest_funcs_optimize
+
+# -ltest_funcs_optimize указывается на сам libtest_funcs_optimize.so (обязан начинаться на lib)
+# образовался объектный файл main.o
+
+export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH  # указываем где искать библиотеку
+./main
+
