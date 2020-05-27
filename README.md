@@ -41,10 +41,15 @@ In case the execute permission was denied change the access permission by comman
    
     chmod +x run
 
-After running the project as a result in your terminal you have information about testing every function and 
-method from the compiled library (PASS/FAIL, calculated global minimum of current function with current method,
-real global minimum, calculation error, execution time). At the end of output - the amount of conducted tests and 
-failures.
+After running the project as a result in your terminal you'll get several characteristics about testing every function and 
+method from the compiled library:
+*PASS/FAIL
+*Calculated global minimum of current function with current method
+*Real global minimum
+*Calculation error 
+*Execution time. 
+
+At the end of output - the amount of conducted tests and failures.
 
  ## Using .so library in remote .c file
  
