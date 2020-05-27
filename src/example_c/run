@@ -2,6 +2,6 @@
 
 gcc -L ~/.local/share/opty-func/build/src/test_funcs_lib -I ~/.local/share/opty-func/src/test_funcs_lib/ -o example example.c -ltest_funcs_optimize
 
-export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH  # указываем где искать библиотеку
+export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH  
 ./example
 
