@@ -31,7 +31,7 @@ To build the project use script named run. Several options are allowed:
 
     ./run start - for running the project (only after building it).
 
-    ./run       - for builing and running the project.
+    ./run       - for building and running the project.
 
     ./run clean - for cleaning the build directory.
 
@@ -53,7 +53,7 @@ At the end of output - the amount of conducted tests and failures.
 
  ## Using .so library in remote .c file
  
- Example of c code invoking some functions from .so library. Don't forget to include header file!
+ Example of c code invoking some functions from .so library. Don't forget to include header file.
  
     #include <stdio.h>
     #include "test_funcs_optimize.h"
@@ -89,7 +89,7 @@ You can find this example in the directory `src/example_c`. To simplify running 
 
  ## Using .so library in remote .py file
  
- Example of python code invoking some functions from .so library:
+ Example of python code invoking some functions from .so library (let it be `main.py`):
       
       import binding
       
@@ -108,11 +108,53 @@ This command let the interpreter know where it can find the file `binding.py` wh
 
      python3 main.py
      
-To find more complex example go the directory `src/example_py`. Use attached script file. 
- 
+To find more complex example go the directory `src/example_py`. Use attached script file.
+
+## Using .so library in remote .go file
+
+There is an example of go code implementing some functions from .so library. Let the file name be `main.go`.
+
+    package main
+    import (
+         "binding"
+         "fmt"
+     )
+
+     func main() {
+            mas := []float64{3.0, 3.0}
+            fmt.Println(binding.Sphere_function(mas))
+            fmt.Println(binding.Matias_function(mas))
+            fmt.Println(binding.Levi_function(mas))
+
+	fmt.Println(binding.Luus_jaakola_method(mas, "Sphere_func", 0.001))  
+	fmt.Println(binding.Competing_points_method(mas, "Sphere_func"))
+
+	fmt.Println("EXEC TIME =", binding.Get_execution_time())
+	fmt.Println(binding.Get_min_x_rastrigin_function(mas))
+      }
+
+First of all you need to set an environment variable `GOPATH`. Go compiler is always checking two paths, `$GOROOT/src` and `GOPATH/src`, so one of them should lead to the package `binding` which is linked with the .so library by means of LDFLAGS and CFLAGS. `./binding_go/src/binding/binding.go` imports a pseudo-package "C" therefore the user can take a references to C types.
+
+    export GOPATH=~/.local/share/opty-func/binding_go
+    
+Now build the example program with the command
+
+    go build main.go
+
+After that you need to set an environment variable `LD_LIBRARY_PATH` to the path where compiler can finc .so library. Run the program.
+
+    export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
+    ./main
+    
+You can find an example in the directory `example_go/exmple.go`. Use the script for help.
+
+
+    
+
+
+
+
  ## Using .so library in remote .java file
- 
- ## Using .so library in remote .go file
  
  ## Using .so library in remote .js file
  
