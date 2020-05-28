@@ -268,15 +268,15 @@ Now run the program with the command
     
 But be cautious of using it on your webpage, node-ffi is a Node.js addon for loading and calling dynamic libraries so you won't be able lauch it from inside the browser. One of the solutions is to separate client and server sides: client gets an initial data from user via webpage, sends the request to server side, server gets access to .so library and sends modified data back to the client. 
      
-## Launching webserver invoking several functions from .so library via server side.
+## Launching server invoking several functions from .so library and sending results to client side.
 
 You can find webpage source files in the directory `./src/example_nodejs/webpage/`.
-To run the webserver you need to install express, body-parser modules:
+To run the server you need to install express, body-parser modules:
 
      npm install express
      npm install body-parser
      
-After that start the server and open the file `./src/example_nodejs/webpage/opt_funcs.html` by clicking it. Press the button `build boxplot` and wait a few seconds. You'll get four boxplots and four tables interpreting calculated results. 
+After that start the server and open the file `./src/example_nodejs/webpage/opt_funcs.html` by clicking it. Press the button `build boxplot` on the opened page and wait a few seconds. You'll get four boxplots and four tables interpreting calculated results. 
 
      cd src/example_nodejs/webpage/
      node server.js
