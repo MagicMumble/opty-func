@@ -219,7 +219,7 @@ Set an `LD_LIBRARY_PATH` to the `libtest_funcs_optimize.so` and run your program
     
 Look for an example java code in the directory `./src/example_java`. Try the script `run` using options
 
-    ./run lib - to compile the .so library based on your `Binding.java` file.
+    ./run lib - to compile the .so library based on your Binding.java file.
     ./run file - to run created class.
     ./run - to compile ./so and run the program.
  
