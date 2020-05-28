@@ -1,0 +1,19 @@
+{
+  "name": "diplom1",
+  "version": "1.0.0",
+  "description": "jh",
+  "main": "index.js",
+  "target": "node",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "ffi": "^2.3.0",
+    "plotly": "^1.0.6",
+    "ref-array": "^1.2.0"
+  },
+  "externals": {
+  }
+}
