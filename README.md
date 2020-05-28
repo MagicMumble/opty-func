@@ -265,29 +265,25 @@ If you're getting hit by the error `Could not locate the bindings file` try rebu
 Now run the program with the command
    
      node main.js
- 
- 
- 
+     
+## Testing functions:
 
-                    Представленные методы:
+* Rastrigin function
+* Ekli function
+* Sphere function
+* Rosenbrock function
+* Bill function
+* Goldman Price function
+* Boot function
+* Bookin function
+* Matias function
+* Levi function
+* Three hump camel function
+* Easom function
 
-    метод Хука-Дживса,
-    метод конкурирующих точек (с использованием кластеризации),
-    метод Luus-Jaakola.
+## Optimization methods:
 
-==============================================================
+* Hooke Jeeves method
+* Competing points method
+* Luus jaakola method
 
-                      Тестовые функции:
-
-    функция Растригина,
-    функция Экли,
-    функция сферы,
-    функция Розенброка,
-    функция Била,
-    функция Гольдмана-Прайса,
-    функция Бута,
-    функция Букина,
-    функция Матьяса,
-    функция Леви,
-    функция трехгорбого верблюда,
-    функция Изома.
