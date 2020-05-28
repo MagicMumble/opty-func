@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export GOPATH=~/.local/share/opty-func/binding_go
+go build example.go
+
+export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
+
+./example
+
+
