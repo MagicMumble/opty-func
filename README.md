@@ -258,7 +258,7 @@ Before running this program you need to install ffi, ref-array modules:
      npm install ffi
      npm install ref-array
      
-If you're getting hit by the error *'Could not locate the bindings file'* try rebuilding dependencies with npm rebuild. It might happen when some libraries failed during installation.
+If you're getting hit by the error *'Could not locate the bindings file'* try rebuilding dependencies. It might happen when some libraries failed during installation.
 
      npm rebuild
      
