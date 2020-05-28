@@ -1,0 +1,17 @@
+{
+  "name": "diplom1",
+  "version": "1.0.0",
+  "description": "jh",
+  "main": "index.js",
+  "target": "node",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ffi": "^2.3.0",
+    "ref-array": "^1.2.0"
+  },
+  "externals": {
+  }
+}
