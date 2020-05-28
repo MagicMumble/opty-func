@@ -95,8 +95,13 @@ You can find this example in the directory `src/example_c`. To simplify running 
       
       my_list = [9, 2, 3]
       print("Hooke_Jeeves_method for sphere func: ", binding.hooke_jeeves_method(my_list, "Sphere_func", 0.001))
+      print("Luus_Jaakola_method for sphere func: ", binding.luus_jaakola_method(my_list, "Sphere_func", 0.001))
+      print("Competing_points_method for sphere func: ", binding.competing_points_method(my_list, "Sphere_func"))
+      print("Time of competing points method for sphere_func: ", binding.get_execution_time())
       
       x = [3, 4]
+      print("Rastrigin: ", binding.rastrigin_function(x))
+      print("Stibinski_Tanga: ", binding.stibinski_tanga_function(x))
       print("Boot: ", binding.boot_function(x))
       print("Bookin: ", binding.bookin_function(x))
  
@@ -126,11 +131,11 @@ There is an example of go code implementing some functions from .so library. Let
             fmt.Println(binding.Matias_function(mas))
             fmt.Println(binding.Levi_function(mas))
 
-	fmt.Println(binding.Luus_jaakola_method(mas, "Sphere_func", 0.001))  
-	fmt.Println(binding.Competing_points_method(mas, "Sphere_func"))
+	    fmt.Println(binding.Luus_jaakola_method(mas, "Sphere_func", 0.001))  
+	    fmt.Println(binding.Competing_points_method(mas, "Sphere_func"))
 
-	fmt.Println("EXEC TIME =", binding.Get_execution_time())
-	fmt.Println(binding.Get_min_x_rastrigin_function(mas))
+	    fmt.Println("EXEC TIME =", binding.Get_execution_time())
+	    fmt.Println(binding.Get_min_x_rastrigin_function(mas))
       }
 
 First of all you need to set an environment variable `GOPATH`. Go compiler is always checking two paths, `$GOROOT/src` and `GOPATH/src`, so one of them should lead to the package `binding` which is linked with the .so library by means of LDFLAGS and CFLAGS. `./binding_go/src/binding/binding.go` imports a pseudo-package "C" therefore the user can take a references to C types.
