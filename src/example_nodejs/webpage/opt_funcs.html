@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function Optimization Library</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+    <h1>Library for testing function optimization methods</h1>
+</head>
+<body>
+
+<label for="eps">Epsilon:</label><input type="text" id="eps" name="fname" value="0.001"><br><br>
+<label for="x0">x0:</label><input type="text" id="x0" name="fname" value="3.0 4.0"><br><br>
+<button id="build_boxplot">Build boxplot</button>
+
+<table>
+    <tr>
+        <td><div id="plot1"></div></td>
+        <td><div id="plot2"></div></td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td><div id="plot3"></div></td>
+        <td><div id="plot4"></div></td>
+    </tr>
+</table>
+
+<div id="table1"></div>
+<div id="table2"></div>
+<div id="table3"></div>
+<div id="table4"></div>
+
+<script src="client.js"></script>
+
+</body>
+</html>
