@@ -223,12 +223,49 @@ Look for an example java code in the directory `./src/example_java`. Try the scr
     ./run file - to run created class.
     ./run - to compile ./so and run the program.
  
- 
- 
- 
- 
- 
  ## Using .so library in remote .js file
+ 
+ Let's take a look at the node.js example code named main.js.
+ 
+     var ffi = require("ffi");
+     var ArrayType = require('ref-array');
+     var DoubleArray = ArrayType('double');
+
+     var user = process.env.USER || ""
+     lib = "/home/" + user + "/.local/share/opty-func/build/src/test_funcs_lib/libtest_funcs_optimize.so"
+
+     var my_lib = ffi.Library(lib, {
+         "sphere_function": ['double', [DoubleArray, 'int']],
+         "ekli_function": ['double', [DoubleArray, 'int']],
+         "luus_jaakola_method": ['void', [DoubleArray, 'int', 'string', DoubleArray, 'float']],
+         "get_execution_time": ['double', []]
+     });
+
+     var mas = [1.0, 2.0]
+     var res = [0.0, 0.0]
+     var array = new DoubleArray(mas);
+     var array_res = new DoubleArray(res);
+
+     console.log("Sphere func = ", my_lib.sphere_function(mas, mas.length))
+     console.log("Ekli func = ", my_lib.ekli_function(mas, mas.length))
+
+     my_lib.luus_jaakola_method(array, mas.length, "Ekli_func", array_res, 0.001)
+     res_final = [array_res[0], array_res[1]]
+     console.log("Luus Jaakola method: ", res_final, " , time = ", my_lib.get_execution_time())
+     
+Before running this program you need to install ffi, ref-array modules:
+     
+     npm install ffi
+     npm install ref-array
+     
+If you're getting hit by the error `Could not locate the bindings file` try rebuilding dependencies with npm rebuild. It might happen when some libraries failed during installation.
+
+     npm rebuild
+     
+Now run the program with the command
+   
+     node main.js
+ 
  
  
 
