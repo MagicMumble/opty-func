@@ -153,13 +153,80 @@ After that you need to set an environment variable `LD_LIBRARY_PATH` to the path
     
 You can find an example in the directory `example_go/exmple.go`. Use the script for help.
 
-
-    
-
-
-
-
  ## Using .so library in remote .java file
+ 
+ Let's observe some example java file Binding.java which invokes several functions from .so library.
+      
+    import java.io.File;
+
+    public class Binding {
+
+        public native double rastrigin_function(double[] mas);
+        public native double sphere_function(double[] mas);
+    
+        public native double[] luus_jaakola_method(double[] mas, String s, double[] res, float err);
+        public native double[] competing_points_method(double[] mas, String s, double[] res);
+
+        public native double[] get_min_x_ekli_function(double[] res);
+
+        static {
+            System.load("/home/" + System.getProperty("user.name") + "/.local/share/opty-func/binding_java/lib_bind_func_opt.so");
+        }
+
+        private static void print_mas(String method, double[] mas) {
+            System.out.println(method + ":");
+            for (double ma : mas) {
+                System.out.print(ma + " ");
+            }
+            System.out.println();
+        }
+
+        public static void main(String[] args) {
+            Binding b = new Binding();
+            double[] mas = {6.0, 2.0};
+            double res[] = new double[mas.length];
+
+            System.out.println(b.rastrigin_function(mas));
+            System.out.println(b.sphere_function(mas));
+	
+            print_mas("Luus_Jaakola_method", b.luus_jaakola_method(mas, "Rastrigin_func", res, 0.001f));
+            print_mas("Competing_points_method", b.competing_points_method(mas, "Rastrigin_func", res));
+
+            System.out.println("Time of competing points method: " + b.get_execution_time());
+
+            print_mas("Mix x for elki func", b.get_min_x_ekli_function(res));
+        }
+    }
+    
+Assuming you're in the same directory with your `Binding.class` file use the command to create a C header file based on native methods declared in `Binding.class`.
+  
+    javac Binding.java -h ~/.local/share/opty-func/binding_java/
+    
+You need only to declare native methods which you're going to use in your program. Header file will be created in the directory `./binding_java/`. According to newly created header file the C file should be written defining all the declared functions in header file. You already downladed this C file with package `opty-func`.
+
+The next step is to create an object file with position independent code using flag -fpic. That means that the generated machine code is not dependent on being located at a specific address in order to work. As a result you'll have an object file `Binding.o` in the directory `./binding_java/`. This proccess was once made automatically with cmake to create shared object library in this project.
+
+    gcc -I /usr/lib/jvm/java-8-openjdk-amd64/include -I /usr/lib/jvm/java-8-openjdk-amd64/include/linux -I ~/.local/share/opty-func/src/test_funcs_lib/ -o ~/.local/share/opty-func/binding_java/Binding.o -c -fpic  ~/.local/share/opty-func/binding_java/Binding.c
+    
+Now you need to build .so library that invokes the first one created in first paragraph (the former linked to the latter with flag `-ltest_funcs_optimize` and the path after `-L` flag).
+
+    gcc -L ~/.local/share/opty-func/build/src/test_funcs_lib -shared -o  ~/.local/share/opty-func/binding_java/lib_bind_func_opt.so ~/.local/share/opty-func/binding_java/Binding.o -ltest_funcs_optimize
+    
+Set an `LD_LIBRARY_PATH` to the `libtest_funcs_optimize.so` and run your program in current directory.
+
+    export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
+    java -classpath . Binding
+    
+Look for an example java code in the directory `./src/example_java`. Try the script `run` using options
+
+    ./run lib - to compile the .so library based on your `Binding.java` file.
+    ./run file - to run created class.
+    ./run - to compile ./so and run the program.
+ 
+ 
+ 
+ 
+ 
  
  ## Using .so library in remote .js file
  
