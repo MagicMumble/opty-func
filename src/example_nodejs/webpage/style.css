@@ -1,0 +1,30 @@
+h1 {
+    color: #0a0a0a;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 20px auto;
+    background-color: #dadce2;
+    font-weight: 300;
+    text-align: center;
+}
+
+#plot1, #plot2, #plot3, #plot4 {
+    margin-top: 50px;
+    margin-left: 30px;
+    margin-right: 100px;
+    height: 450px;
+    width: 600px;
+    position: center;
+}
+
+#table1, #table2, #table3, #table4 {
+    margin-top: 50px;
+    margin-left: 30px;
+    margin-right: 900px;
+    height: 700px;
+    width: 1200px;
+    position: center;
+    alignment: center;
+}
