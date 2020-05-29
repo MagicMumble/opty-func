@@ -27,7 +27,7 @@ Minimum required cmake version - 3.12.
 To build the project use script named run. Several options are allowed:
 
     ./run build - for building the project. 
- This command creates build directory and    build the project. Now you have shared object library named test_funcs_optimize.so in `~/build/src/test_funcs_lib/`.
+ This command creates build directory and    build the project. Now you have shared object library named test_funcs_optimize.so in `./build/src/test_funcs_lib/`.
 
     ./run start - for running the project (only after building it).
 
