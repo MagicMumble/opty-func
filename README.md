@@ -198,7 +198,7 @@ You can find an example in the directory `./src/example_go/example.go`. Use the 
         }
     }
     
-Assuming you're in the same directory with your `Binding.class` file use the command to create a C header file based on native methods declared in `Binding.class`.
+Assuming you're in the same directory with your `Binding.java` file use the command to create a C header file based on native methods declared in `Binding.java`.
   
     javac Binding.java -h ~/.local/share/opty-func/binding_java/
     
