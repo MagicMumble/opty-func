@@ -85,7 +85,7 @@ The environment variable `LD_LIBRARY_PATH` tells the compiler where to load the 
              
     ./main
             
-You can find this example in the directory `src/example_c`. To simplify running .c file use attached script file. 
+You can find this example in the directory `./src/example_c`. To simplify running .c file use attached script file. 
 
  ## Using .so library in remote .py file
  
@@ -113,7 +113,7 @@ This command let the interpreter know where it can find the file `binding.py` wh
 
      python3 main.py
      
-To find more complex example go the directory `src/example_py`. Use attached script file.
+To find more complex example go the directory `./src/example_py`. Use attached script file.
 
 ## Using .so library in remote .go file
 
