@@ -151,7 +151,7 @@ After that you need to set an environment variable `LD_LIBRARY_PATH` to the path
     export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
     ./main
     
-You can find an example in the directory `example_go/exmple.go`. Use the script for help.
+You can find an example in the directory `./src/example_go/example.go`. Use the script for help.
 
  ## Using .so library in remote .java file
  
