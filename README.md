@@ -265,6 +265,8 @@ If you're getting hit by the error *'Could not locate the bindings file'* try re
 Now run the program with the command
    
      node main.js
+     
+The example of node.js code you can find in directory `./src/example_nodejs/example.js`. 
     
 But be cautious of using it on your webpage, node-ffi is a Node.js addon for loading and calling dynamic libraries so you won't be able lauch it from inside the browser. One of the solutions is to separate client and server sides: client gets an initial data from user via webpage, sends the request to server side, server gets access to .so library and sends modified data back to the client. 
      
