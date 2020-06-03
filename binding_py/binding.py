@@ -3,12 +3,10 @@ import getpass
 
 def prepare_data_for_method(list_in, str, method, eps):
     n = len(list_in)
-    s = (ctypes.c_char * len(str))()
-    s[:] = [s.encode('utf-8') for s in str]
     c_arr_in = (ctypes.c_double * n)(*list_in)
     c_arr_out = (ctypes.c_double * n)()
     method.restype = None
-    method(c_arr_in, ctypes.c_int(n), s, c_arr_out, ctypes.c_float(eps))
+    method(c_arr_in, ctypes.c_int(n), str.encode('utf-8'), c_arr_out, ctypes.c_float(eps))
     return c_arr_out[:]
 
 
