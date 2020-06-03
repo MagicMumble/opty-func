@@ -1,5 +1,4 @@
 package binding
-import "C"
 
 //#include <stdlib.h>
 // #cgo LDFLAGS: -L${SRCDIR}/../../../build/src/test_funcs_lib -ltest_funcs_optimize
