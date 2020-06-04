@@ -3,7 +3,7 @@
 if [ "$1" = "lib" ] 
 	then
 	javac Binding.java -h ~/.local/share/opty-func/binding_java/   #пишет хедер на основе джава-файла
-	gcc -I /usr/lib/jvm/java-8-openjdk-amd64/include -I /usr/lib/jvm/java-8-openjdk-amd64/include/linux -I ~/.local/share/opty-func/src/test_funcs_lib/ -o ~/.local/share/opty-func/binding_java/Binding.o -c -fpic  ~/.local/share/opty-func/binding_java/Binding.c
+	gcc -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -I ~/.local/share/opty-func/src/test_funcs_lib/ -o ~/.local/share/opty-func/binding_java/Binding.o -c -fpic  ~/.local/share/opty-func/binding_java/Binding.c
 	gcc -L ~/.local/share/opty-func/build/src/test_funcs_lib -shared -o  ~/.local/share/opty-func/binding_java/lib_bind_func_opt.so ~/.local/share/opty-func/binding_java/Binding.o -ltest_funcs_optimize
 elif [ "$1" = "file" ] 
 	then
@@ -11,7 +11,7 @@ elif [ "$1" = "file" ]
 	java -classpath . Binding
 else
 	javac Binding.java -h ~/.local/share/opty-func/binding_java/   #пишет хедер на основе джава-файла
-	gcc -I /usr/lib/jvm/java-8-openjdk-amd64/include -I /usr/lib/jvm/java-8-openjdk-amd64/include/linux -I ~/.local/share/opty-func/src/test_funcs_lib/ -o ~/.local/share/opty-func/binding_java/Binding.o -c -fpic  ~/.local/share/opty-func/binding_java/Binding.c
+	gcc -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -I ~/.local/share/opty-func/src/test_funcs_lib/ -o ~/.local/share/opty-func/binding_java/Binding.o -c -fpic  ~/.local/share/opty-func/binding_java/Binding.c
 	gcc -L ~/.local/share/opty-func/build/src/test_funcs_lib -shared -o  ~/.local/share/opty-func/binding_java/lib_bind_func_opt.so ~/.local/share/opty-func/binding_java/Binding.o -ltest_funcs_optimize
 	export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
 	java -classpath . Binding
