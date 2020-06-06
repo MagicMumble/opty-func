@@ -86,7 +86,6 @@ function get_exec_time(array, array_res, eps) {
 }
 
 var bodyParser = require('body-parser')
-server.set('port', process.env.PORT || 3000);
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 server.post("/", urlencodedParser, function(req, res) {
