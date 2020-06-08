@@ -206,7 +206,7 @@ You need only to declare native methods which you're going to use in your progra
 
 The next step is to create an object file with position independent code using flag -fpic. That means that the generated machine code is not dependent on being located at a specific address in order to work. As a result you'll have an object file `Binding.o` in the directory `./binding_java/`. This proccess was once made automatically with cmake to create shared object library in this project.
 
-    gcc -I /usr/lib/jvm/java-8-openjdk-amd64/include -I /usr/lib/jvm/java-8-openjdk-amd64/include/linux -I ~/.local/share/opty-func/src/test_funcs_lib/ -o ~/.local/share/opty-func/binding_java/Binding.o -c -fpic  ~/.local/share/opty-func/binding_java/Binding.c
+    gcc -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -I ~/.local/share/opty-func/src/test_funcs_lib/ -o ~/.local/share/opty-func/binding_java/Binding.o -c -fpic  ~/.local/share/opty-func/binding_java/Binding.c
     
 Now you need to build .so library that invokes the first one created in first paragraph (the former linked to the latter with flag `-ltest_funcs_optimize` and the path after `-L` flag).
 
