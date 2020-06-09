@@ -71,7 +71,7 @@ function build_boxplot(resp) {
 
     var plots = [document.getElementById('plot2'), document.getElementById('plot3'), document.getElementById('plot4')]
     var methods = ['Hooke Jeeves method', 'Luus Jaakola method', 'Competing points method']
-    var d_tick = [2, 100, 150]
+    var d_tick = [2, 2, 150]
     for (i=0; i<methods.length; i++) {
         var trace = make_trace_layout_seperatly(yData[i], methods[i], d_tick[i])
         Plotly.newPlot(plots[i], trace[0], trace[1]);
