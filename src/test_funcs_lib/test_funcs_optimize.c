@@ -2,7 +2,6 @@
 #include <math.h>
 #include <time.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
 #include "test_funcs_optimize.h"
 
