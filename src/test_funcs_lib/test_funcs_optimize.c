@@ -373,7 +373,7 @@ void hooke_jeeves_method(const double* x_first, int n, char* s, double* res, flo
             minimize(new_x, n, i, (*function), bisection_method, eps);
         }
         new_f = (*function)(new_x, n);
-        if (new_f < f_before) {   //если исследующий поиск был удачным
+        if (new_f < f_before) {                                          //если исследующий поиск был удачным
             for (i = 0; i < n; i++) {
                 double tmp = x_before[i];
                 x_before[i] = new_x[i];
@@ -394,7 +394,7 @@ void hooke_jeeves_method(const double* x_first, int n, char* s, double* res, flo
             t = clock() - t;
             execution_time = ((double)t)/CLOCKS_PER_SEC;  //in seconds
             return;
-        } else {                        //исследующий поиск снова?
+        } else {                                          // исследующий поиск снова
             for (i = 0; i < n; i++) {
                 new_x[i] = x_before[i];
             }
@@ -411,7 +411,7 @@ void luus_jaakola_method(const double* x_first, int n, char* str, double* res, f
     clock_t t = clock();
     double (*function)(double*, int) = define_function_name(str);
     srand((unsigned int) time(0));                                   //init rand
-    int N = 1000, R = 1000, q = 100, i, p, k, s;                     // N - кол-во итераций за прогон, R - кол-во генерируемых случайных точек на каждой итерации,
+    int N = 10, R = 100, q = 50, i, p, k, s;                     // N - кол-во итераций за прогон, R - кол-во генерируемых случайных точек на каждой итерации,
     double reduce_coef = 0.95;                                       // q - кол-во прогонов, reduce_coef - коэф-т сжатия области поиска
     double x_new[n], x_before[n], r[n];
     for (i = 0; i<n; i++) {
@@ -466,7 +466,7 @@ double euclidian_distance(double* x1, double* x2, int n) {
 void competing_points_method(const double* x_first, int n, char* s, double* res) {
     clock_t t = clock();
     double (*function)(double*, int) = define_function_name(s);
-    int cluster_count = 20, r = 30;                      // кол-во кластеров должно быть больше чем предполагаемое количество локальных минимумов
+    int cluster_count = 50, r = 10;                      // кол-во кластеров должно быть больше чем предполагаемое количество локальных минимумов
     double clusters[cluster_count][n], min_dist = 0.1;   //поиск будет проходить в области +-r относительно x_first
     double step = 2.0*r / (cluster_count - 1);
     for (int k = 0; k<cluster_count; k++) {
@@ -520,9 +520,7 @@ void competing_points_method(const double* x_first, int n, char* s, double* res)
             }
         }
         if (size == 1) {
-            for (int i = 0; i < n; i++) {
-                res[i] = new_clusters[0][i];
-            }
+            hooke_jeeves_method(new_clusters[0], n, s, res, 0.001);
             t = clock() - t;
             execution_time = ((double)t)/CLOCKS_PER_SEC;  //in miliseconds
             return;
@@ -533,7 +531,7 @@ void competing_points_method(const double* x_first, int n, char* s, double* res)
                 }
             }
             cluster_count = size;
-            min_dist *= 10;
+            min_dist *= 500;
         }
     }
 }
