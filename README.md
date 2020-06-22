@@ -85,7 +85,7 @@ The environment variable `LD_LIBRARY_PATH` tells the compiler where to load the 
              
     ./main
             
-You can find this example in the directory `./src/example_c`. To simplify running .c file use attached script file. 
+You can find this example in the directory `./src/example_c`. To simplify running .c file use attached script file (run `./run` from the directory `./src/example_c`). 
 
  ## Using .so library in remote .py file
  
@@ -113,7 +113,7 @@ This command let the interpreter know where it can find the file `binding.py` wh
 
      python3 main.py
      
-To find more complex example go the directory `./src/example_py`. Use attached script file.
+To find more complex example go the directory `./src/example_py`. Use attached script file (run `./run` from the directory `./src/example_py`).
 
 ## Using .so library in remote .go file
 
@@ -151,7 +151,7 @@ After that you need to set an environment variable `LD_LIBRARY_PATH` to the path
     export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
     ./main
     
-You can find an example in the directory `./src/example_go/example.go`. Use the script for help.
+You can find an example in the directory `./src/example_go/example.go`. Use the script for help (run `./run` from the directory `./src/example_go`).
 
  ## Using .so library in remote .java file
  
@@ -217,7 +217,7 @@ Set an `LD_LIBRARY_PATH` to the `libtest_funcs_optimize.so` and run your program
     export LD_LIBRARY_PATH=~/.local/share/opty-func/build/src/test_funcs_lib:$LD_LIBRARY_PATH
     java -classpath . Binding
     
-Look for an example java code in the directory `./src/example_java`. Try the script `run` using options
+Look for an example java code in the directory `./src/example_java`. Try the script `./run` from `./src/example_java` using options
 
     ./run lib - to compile the .so library based on your Binding.java file.
     ./run file - to run created class.
@@ -266,7 +266,7 @@ Now run the program with the command
    
      node main.js
      
-The example of node.js code you can find in directory `./src/example_nodejs/example.js`. 
+The example of node.js code you can find in directory `./src/example_nodejs/example.js` (run `node example.js` from the directory `./src/example_nodejs`). 
     
 But be cautious of using it on your webpage, node-ffi is a Node.js addon for loading and calling dynamic libraries so you won't be able lauch it from inside the browser. One of the solutions is to separate client and server sides: client gets an initial data from user via webpage, sends the request to server side, server gets access to .so library and sends modified data back to the client. 
      
