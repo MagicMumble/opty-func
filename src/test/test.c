@@ -31,7 +31,7 @@ double cur_err;
 
 int n3 = 3;
 int n2 = 2;
-float eps = 0.001;
+float eps = 0.1;
 double x_start3[] = {10.0, 11.0, 13.0};
 double x_start2[] = {3.0, 4.0};
 double mas_res2[2];
