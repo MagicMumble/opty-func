@@ -69,7 +69,7 @@ public class Binding {
 
         print_mas("Hooke_jeeves_method", b.hooke_jeeves_method(mas, "Rastrigin_func", res, 0.001f));
         print_mas("Luus_Jaakola_method", b.luus_jaakola_method(mas, "Rastrigin_func", res, 0.001f));
-        print_mas("Competing_points_method", b.competing_points_method(mas, "Rastrigin_func", res));
+        print_mas("Competing_points_method", b.competing_points_method(mas, "Sphere_func", res));
 
         System.out.println("Time of competing points method: " + b.get_execution_time());
 
