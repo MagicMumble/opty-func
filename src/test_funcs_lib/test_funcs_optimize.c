@@ -215,7 +215,7 @@ double easom_function(double* x, int n) {                    // -100.0 <= x[0], 
     if (n != 2) {
         error(n);
     }
-    return -cos(x[0])*cos(x[1])*pow(M_E, - (x[0]-M_PI)*(x[0]-M_PI) + (x[1]-M_PI)*(x[1]-M_PI)));
+    return -cos(x[0])*cos(x[1])*pow(M_E, - ((x[0]-M_PI)*(x[0]-M_PI) + (x[1]-M_PI)*(x[1]-M_PI)));
 }
 
 double (*define_function_name(char* s)) (double*, int) {
