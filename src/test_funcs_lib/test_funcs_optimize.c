@@ -117,7 +117,7 @@ double rastrigin_function(double *x, int n) {  // -5.12 <= x[i] <= 5.12       "R
     int i = 0, A = 10;
     double result = 0.0;
     for (i=0; i<n; i++) {
-        result += pow(x[i], 2) - A*cos(2*M_PI*x[i]);
+        result += x[i]*x[i] - A*cos(2*M_PI*x[i]);
     }
     return result + A*i;
 }
@@ -126,7 +126,7 @@ double stibinki_tanga_function(double* x, int n) {       // -5 <= x[i] <= 5     
     int i = 0;
     double result = 0.0;
     for (i=0; i<n; i++) {
-        result += pow(x[i], 4) - 16*pow(x[i], 2) + 5*x[i];
+        result += x[i]*x[i]*x[i]*x[i] - 16*x[i]*x[i] + 5*x[i];
     }
     return result/2.0;
 }
@@ -135,7 +135,7 @@ double ekli_function(double* x, int n) {     // -5 <= x[0], x[1] <= 5           
     if (n != 2) {
         error(n);
     }
-    return -20.0 * pow(M_E, (-0.2 * sqrt(0.5 * (pow(x[0], 2) + pow(x[1], 2))))) -
+    return -20.0 * pow(M_E, (-0.2 * sqrt(0.5 * (x[0]*x[0] + x[1]*x[1])))) -
            pow(M_E, 0.5 * (cos(2 * M_PI * x[0]) + cos(2 * M_PI * x[1]))) + M_E + 20.0;
 }
 
@@ -143,7 +143,7 @@ double sphere_function(double* x, int n) {         // -oo <= x[i] <= oo         
     int i = 0;
     double result = 0.0;
     for (i=0; i<n; i++) {
-        result += pow(x[i], 2);
+        result += x[i]*x[i];
     }
     return result;
 }
@@ -152,7 +152,7 @@ double rosenbrock_function(double* x, int n) {                                  
     int i = 0;
     double result = 0.0;
     for (i=0; i<n-1; i++) {
-        result += 100 * pow(x[i+1] - pow(x[i], 2), 2) + pow(x[i] - 1, 2);
+        result += 100 * (x[i+1] - x[i]*x[i])*(x[i+1] - x[i]*x[i]) + (x[i] - 1)*(x[i] - 1);
     }
     return result;
 }
@@ -161,57 +161,61 @@ double bill_function(double* x, int n) {     // -4.5 <= x[0], x[1] <= 4.5       
     if (n != 2) {
         error(n);
     }
-    return pow(1.5 - x[0] + x[0]*x[1], 2) + pow(2.25 - x[0] + x[0]*pow(x[1], 2), 2) + pow(2.625 - x[0] + x[0]*pow(x[1], 3), 2);
+    return (1.5 - x[0] + x[0]*x[1])*(1.5 - x[0] + x[0]*x[1]) + 
+	    (2.25 - x[0] + x[0]*x[1]*x[1])*(2.25 - x[0] + x[0]*x[1]*x[1]) + 
+	    (2.625 - x[0] + x[0]*x[1]*x[1]*x[1])*(2.625 - x[0] + x[0]*x[1]*x[1]*x[1]);
 }
 
 double goldman_price_function(double* x, int n) {       //-2 <= x[0], x[1] <= 2     "Goldman_Price_func"
     if (n != 2) {
         error(n);
     }
-    return (1+pow(x[0]+x[1]+1, 2)*(19-14*x[0]+3*pow(x[0],2) - 14*x[1] + 6*x[0]*x[1] + 3*pow(x[1], 2)))*
-           (30 + pow(2*x[0] - 3*x[1],2)*(18-32*x[0] + 12*pow(x[0],2) + 48*x[1] - 36*x[0]*x[1] + 27*pow(x[1], 2)));
+    return (1+(x[0]+x[1]+1)*(x[0]+x[1]+1)*(19-14*x[0]+3*x[0]*x[0] - 14*x[1] + 6*x[0]*x[1] + 3*x[1]*x[1]))*
+           (30 + (2*x[0] - 3*x[1])*(2*x[0] - 3*x[1])*(18-32*x[0] + 12*x[0]*x[0] + 48*x[1] - 36*x[0]*x[1] + 27*x[1]*x[1]));
 }
 
 double boot_function(double* x, int n) {     // -10.0 <= x[0], x[1] <= 10.0          "Boot_func"
     if (n != 2) {
         error(n);
     }
-    return pow(x[0] + 2*x[1] - 7, 2) + pow(2*x[0] + x[1] - 5, 2);
+    return pow(x[0] + 2*x[1] - 7, 2) + (2*x[0] + x[1] - 5)*(2*x[0] + x[1] - 5);
 }
 
 double bookin_function(double* x, int n) {    // -15.0 <= x[0] <= -5, // -3 <= x[1] <= 3       "Bookin_func"
     if (n != 2) {
         error(n);
     }
-    return 100*sqrt(fabs(x[1] - 0.01*pow(x[0], 2))) + 0.01*fabs(x[0] + 10);
+    return 100*sqrt(fabs(x[1] - 0.01*x[0]*x[0])) + 0.01*fabs(x[0] + 10);
 }
 
 double matias_function(double* x, int n) {     // -10.0 <= x[0], x[1] <= 10.0                  "Matias_func"
     if (n != 2) {
         error(n);
     }
-    return 0.26*(pow(x[0], 2) + pow(x[1], 2)) - 0.48*x[0]*x[1];
+    return 0.26*(x[0]*x[0] + x[1]*x[1]) - 0.48*x[0]*x[1];
 }
 
 double levi_function(double* x, int n) {       // -10.0 <= x[0], x[1] <= 10.0                 "Levi_func"
     if (n != 2) {
         error(n);
     }
-    return pow(sin(3*M_PI*x[0]), 2) + pow(x[0]-1, 2)*(1 + pow(sin(3*M_PI*x[1]), 2)) + pow(x[1]-1, 2)*(1+pow(sin(2*M_PI*x[1]), 2));
+    return sin(3*M_PI*x[0])*sin(3*M_PI*x[0]) + 
+	    (x[0]-1)*(x[0]-1)*(1 + sin(3*M_PI*x[1])*sin(3*M_PI*x[1])) + 
+	    (x[1]-1)*(x[1]-1)*(1+sin(2*M_PI*x[1])*sin(2*M_PI*x[1]));
 }
 
 double three_humped_camel_function(double* x, int n) {     // -5.0 <= x[0], x[1] <= 5.0         "Three_hump_camel_func"
     if (n != 2) {
         error(n);
     }
-    return 2*pow(x[0], 2) - 1.05 * pow(x[0], 4) + pow(x[0], 6)/6.0 + x[0]*x[1] + pow(x[1], 2);
+    return 2*x[0]*x[0] - 1.05 * x[0]*x[0]*x[0]*x[0] + (x[0]*x[0]*x[0]*x[0]*x[0]*x[0])/6.0 + x[0]*x[1] + x[1]*x[1];
 }
 
 double easom_function(double* x, int n) {                    // -100.0 <= x[0], x[1] <= 100.0           "Easom_func"
     if (n != 2) {
         error(n);
     }
-    return -cos(x[0])*cos(x[1])*pow(M_E, -(pow(x[0]-M_PI, 2) + pow(x[1]-M_PI, 2)));
+    return -cos(x[0])*cos(x[1])*pow(M_E, - (x[0]-M_PI)*(x[0]-M_PI) + (x[1]-M_PI)*(x[1]-M_PI)));
 }
 
 double (*define_function_name(char* s)) (double*, int) {
@@ -251,7 +255,7 @@ double norm(double* x, int n) {
     int i;
     double sum = 0.0;
     for (i = 0; i<n; i++) {
-        sum += pow(x[i], 2);
+        sum += x[i]*x[i];
     }
     return sqrt(sum);
 }
