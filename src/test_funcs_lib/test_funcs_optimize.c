@@ -461,7 +461,7 @@ void luus_jaakola_method(const double* x_first, int n, char* str, double* res, f
 double euclidian_distance(double* x1, double* x2, int n) {
     double distance = 0.0;
     for (int i=0; i<n; i++) {
-        distance += pow(x1[i] - x2[i], 2);
+        distance += (x1[i] - x2[i])*(x1[i] - x2[i]);
     }
     return sqrt(distance);
 }
