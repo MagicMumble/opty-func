@@ -1,5 +1,5 @@
 # opty-func
-Library for optimization methods testing
+Library for optimization methods testing for Unix-systems
 
 
 ## Building and running the project
